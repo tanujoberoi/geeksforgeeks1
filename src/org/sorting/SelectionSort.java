@@ -3,13 +3,33 @@ package org.sorting;
 
 public class SelectionSort {
 
+	
+	void selectionSort(int arr[])
+	{
+		int n = arr.length;
+		GfG obj = new GfG();
+		for(int i=n-1; i>=0; i--)
+		{
+			int j = obj.select(arr, i);
+			
+			int temp = arr[i];
+			arr[i] = arr[j];
+			arr[j] = temp;
+		}	
+	}
+	
 	public static void main(String[] args) {
 		System.err.println("hello U !");
 		
 		
 		SelectionSort sort = new SelectionSort();
-		int arr[] = {64,25,12,22,11};
-		sort.select(arr);
+		
+		
+		
+		int arr[] = {4,1,3,9,7};
+		sort.selectionSort(arr);
+		
+	//	sort.select(arr);
 		System.out.println("Sorted array");
 		sort.printArray(arr);
 
@@ -53,6 +73,22 @@ public class SelectionSort {
 		return 0;
 	}
 	
-	
+}
 
+class GfG
+{
+    int  select(int ar[], int i)
+    {
+	// Your code here
+	int max = ar[i], k = i;
+	for(int j = i - 1; j >=0; j--)
+	{
+	    if(ar[j] > max)
+	    {
+	        max = ar[j];
+	        k = j;
+	    }
+	}
+	return k;
+    }
 }
